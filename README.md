@@ -1,12 +1,13 @@
-🔧 MPLS L3-VPN & LAN ROUTING Project --- Cisco
+# Titre 
+MPLS L3-VPN & LAN ROUTING Project --- Cisco
 
-Niveau : Intermédiaire
+# Niveau : Intermédiaire
 Dans ce lab, je compte déployer une infrastructure BACKBONE MPLS [PEs] qui tourne sur Cisco avec raccordement des Clients [CEs].
 L’objectif principal est de garantir le routage basé sur les Labels , le trafic venant du Lan est transporté sur le réseau Backbone et acheminé vers les Clients raccordés
 [LDP , LSP , Traffic Engineering , ..]
 
-🧩 Contexte technique
-~ OSPF utilisé comme IGP sur la partie Lan avec PBR
+# Contexte technique
+OSPF utilisé comme IGP sur la partie Lan avec PBR
 ~ MP-BGP , iBGP unicast et VPNv4/v6 utilisés sur la partie Wan pour le peering vers les routeurs PEs du Backbone [Peering sur les Loopbacks]
 ~ OSPF & BGP Gracefull-restart/NSR
 ~ ISIS utilisé comme IGP au sein du Backbone entre PEs pour garantir la connectivité Inter-PEs
