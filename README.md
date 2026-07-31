@@ -15,7 +15,7 @@ L’objectif principal est de garantir le routage basé sur les Labels , le traf
 * eBGP utilisé sur la partie Wan pour le peering CEs↔PEs afin d'éviter les redistributions supplémentaires
 * VRFs , RT , RD pour instancier et labeliser le trafic venant des différents Clients CEs
 
-🎯 Objectifs du lab
+# Objectifs du lab
 * Routage Lan et Wan
 * Assurer l'acheminement du trafic entre sites via le Backbone
 * Les Switchs Coeurs (SW_CORE_x) assurent le routage inter-vlan
