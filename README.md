@@ -1,6 +1,7 @@
-# Titre : --- MPLS L3-VPN & LAN ROUTING Project --- Cisco
+# Titre : 
+--- MPLS L3-VPN & LAN ROUTING Project --- Cisco
 
-# Niveau : Intermédiaire
+# Niveau : Intermédiaire/Avancé
 Dans ce lab, je compte déployer une infrastructure BACKBONE MPLS [PEs] qui tourne sur Cisco avec raccordement des Clients [CEs].
 L’objectif principal est de garantir le routage basé sur les Labels , le trafic venant du Lan est transporté sur le réseau Backbone et acheminé vers les Clients raccordés
 [LDP , LSP , Traffic Engineering , ..]
