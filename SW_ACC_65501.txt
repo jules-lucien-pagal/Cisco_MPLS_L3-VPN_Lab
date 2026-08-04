@@ -1,0 +1,195 @@
+SW_ACC_65501#sh run 
+Building configuration...
+
+Current configuration : 4467 bytes
+!
+! Last configuration change at 02:22:54 UTC Tue Aug 4 2026
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname SW_ACC_65501
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+vtp domain pamote.net
+vtp mode transparent
+no ip routing
+!
+!
+!
+no ip domain-lookup
+no ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+vlan 10
+ name Users
+!
+vlan 20
+ name Voice
+!
+vlan 30
+ name Printers
+!
+vlan 99
+ name Native
+!
+vlan 100
+ name Mgmt_Net
+!
+vlan 101
+ name Perimeter_Lan
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk allowed vlan 10,20,30,50,60,70,99-101
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ description Connected_2_PC_65001
+ switchport access vlan 10
+ switchport mode access
+ media-type rj45
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet0/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ description Connected_2_SW_CORE_65501
+ switchport trunk allowed vlan 10,20,30,50,60,70,99-101
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ logging event trunk-status
+ load-interval 30
+ media-type rj45
+ no negotiation auto
+ channel-protocol lacp
+ channel-group 1 mode active
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/3
+ description Connected_2_SW_CORE_65501
+ switchport trunk allowed vlan 10,20,30,50,60,70,99-101
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ logging event trunk-status
+ load-interval 30
+ media-type rj45
+ no negotiation auto
+ channel-protocol lacp
+ channel-group 1 mode active
+ spanning-tree link-type point-to-point
+ spanning-tree guard root
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ media-type rj45
+ negotiation auto
+!
+interface Vlan100
+ description Connected_2_Mgmt_Net
+ ip address 10.57.100.2 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+interface GigabitEthernet1/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ media-type rj45
+ negotiation auto
+!
+interface Vlan100
+ description Connected_2_Mgmt_Net
+ ip address 10.57.100.2 255.255.255.0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec ^C
+

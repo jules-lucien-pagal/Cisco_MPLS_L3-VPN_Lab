@@ -1,0 +1,384 @@
+[00:19:03.312] SW_CORE_65501#show running-config
+[00:19:08.731] Building configuration...
+[00:19:10.814] 
+[00:19:10.814]   
+[00:19:10.814] Current configuration : 7491 bytes
+[00:19:10.817] !
+[00:19:10.817] ! Last configuration change at 02:10:10 UTC Tue Aug 4 2026
+[00:19:10.821] !
+[00:19:10.821] version 15.2
+[00:19:10.822] service timestamps debug datetime msec
+[00:19:10.824] service timestamps log datetime msec localtime show-timezone year
+[00:19:10.828] service password-encryption
+[00:19:10.830] service compress-config
+[00:19:10.831] !
+[00:19:10.832] hostname SW_CORE_65501
+[00:19:10.833] !
+[00:19:10.833] boot-start-marker
+[00:19:10.835] boot-end-marker
+[00:19:10.836] !
+[00:19:10.836] !
+[00:19:10.836] logging discriminator CONFIG mnemonics includes CONFIG_I 
+[00:19:10.840] logging discriminator WARNING 
+[00:19:10.842] logging buffered discriminator CONFIG 150000
+[00:19:10.845] !
+[00:19:10.845] username admpamote privilege 15 secret 9 $9$m59X5EeVoE5T1I$WhgVA0w0QkN8vZumvFpUa7zQAydt2lRDbdZuw6EW6fU
+[00:19:10.852] no aaa new-model
+[00:19:10.853] !
+[00:19:10.853] !
+[00:19:10.853] !
+[00:19:10.853] !
+[00:19:10.854] !
+[00:19:10.854] vtp domain pamote.net
+[00:19:10.855] vtp mode transparent
+[00:19:10.856] !
+[00:19:10.856] ip vrf CCTV
+[00:19:10.857] !
+[00:19:10.857] !
+[00:19:10.858] !
+[00:19:10.858] ip dhcp snooping vlan 2-4094
+[00:19:10.860] ip dhcp snooping
+[00:19:10.861] no ip domain-lookup
+[00:19:10.862] ip domain-name pamote.net
+[00:19:10.864] ip name-server 10.57.50.10
+[00:19:10.866] ip name-server 10.57.50.11
+[00:19:10.867] ip cef
+[00:19:10.868] ipv6 unicast-routing
+[00:19:10.869] ipv6 cef
+[00:19:10.870] !
+[00:19:10.870] !
+[00:19:10.870] archive
+[00:19:10.870]  log config
+[00:19:10.871]   logging enable
+[00:19:10.872]   notify syslog contenttype plaintext
+[00:19:10.875]   hidekeys
+[00:19:10.876] !
+[00:19:10.876] spanning-tree mode rapid-pvst
+[00:19:10.878] spanning-tree extend system-id
+[00:19:10.880] spanning-tree vlan 2-101,103-4094 priority 24576
+[00:19:10.883] spanning-tree vlan 102 priority 28672
+[00:19:10.885] !
+[00:19:10.885] vlan internal allocation policy ascending
+[00:19:10.888] !
+[00:19:10.888] vlan 10
+[00:19:10.889]  name Users 
+[00:19:10.889] !
+[00:19:10.889] vlan 20
+[00:19:10.890]  name Voice 
+[00:19:10.891] !
+[00:19:10.891] vlan 30
+[00:19:10.892]  name Printers
+[00:19:10.893] !
+[00:19:10.893] vlan 40
+[00:19:10.893]  name CCTV
+[00:19:10.894] !
+[00:19:10.894] vlan 50
+[00:19:10.895]  name Servers
+[00:19:10.896] !
+[00:19:10.896] vlan 60
+[00:19:10.896]  name Mgmt_Servers
+[00:19:10.897] !
+[00:19:10.898] vlan 70
+[00:19:10.898]  name iLo_iDrac
+[00:19:10.899] !
+[00:19:10.899] vlan 80
+[00:19:10.900]  name ISP1
+[00:19:10.901] !
+[00:19:10.901] vlan 90
+[00:19:10.901]  name ISP2
+[00:19:10.902] !
+[00:19:10.902] vlan 99
+[00:19:10.903]  name Native
+[00:19:10.904] !
+[00:19:10.904] vlan 100
+[00:19:10.904]  name Mgmt_Net
+[00:19:10.905] !
+[00:19:10.906] vlan 101
+[00:19:10.906]  name Perimeter_Lan
+[00:19:10.908] !
+[00:19:10.908] vlan 102
+[00:19:10.908]  name MPLS_Perimeter_Lan
+[00:19:10.910] !
+[00:19:10.910] vlan 103
+[00:19:10.911]  name STAGGING
+[00:19:10.911] !
+[00:19:10.912] ! 
+[00:19:10.912] !
+[00:19:10.912] !
+[00:19:10.912] !
+[00:19:10.912] !
+[00:19:10.913] !
+[00:19:10.913] !
+[00:19:10.913] !
+[00:19:10.913] !
+[00:19:10.913] !
+[00:19:10.913] !
+[00:19:10.914] !
+[00:19:10.914] !
+[00:19:10.914] interface Loopback0
+[00:19:10.915]  ip address 65.55.0.1 255.255.255.255
+[00:19:10.918] !
+[00:19:10.918] interface Loopback101
+[00:19:10.919]  ip address 101.101.101.101 255.255.255.255
+[00:19:10.922] !
+[00:19:10.922] interface Port-channel1
+[00:19:10.924]  switchport trunk allowed vlan 10,20,30,50,60,70,99-102
+[00:19:10.927]  switchport trunk encapsulation dot1q
+[00:19:10.929]  switchport trunk native vlan 99
+[00:19:10.932]  switchport mode trunk
+[00:19:10.933]  switchport nonegotiate
+[00:19:10.935] !
+[00:19:10.935] interface GigabitEthernet0/2
+[00:19:11.008]  description Connected_2_SW_ACC_65501
+[00:19:11.011]  switchport trunk allowed vlan 10,20,30,50,60,70,99-102
+[00:19:11.017]  switchport trunk encapsulation dot1q
+[00:19:11.020]  switchport trunk native vlan 99
+[00:19:11.023]  switchport mode trunk
+[00:19:11.026]  switchport nonegotiate
+[00:19:11.028]  logging event trunk-status
+[00:19:11.031]  load-interval 30
+[00:19:11.032]  media-type rj45
+[00:19:11.035]  no negotiation auto
+[00:19:11.036]  channel-protocol lacp
+[00:19:11.038]  channel-group 1 mode active
+[00:19:11.040]  spanning-tree link-type point-to-point
+[00:19:11.042]  spanning-tree guard root
+[00:19:11.044]  ip dhcp snooping trust
+[00:19:11.046] !
+[00:19:11.046] interface GigabitEthernet0/3
+[00:19:11.048]  description Connected_2_SW_ACC_65501
+[00:19:11.050]  switchport trunk allowed vlan 10,20,30,50,60,70,99-102
+[00:19:11.054]  switchport trunk encapsulation dot1q
+[00:19:11.056]  switchport trunk native vlan 99
+[00:19:11.058]  switchport mode trunk
+[00:19:11.060]  switchport nonegotiate
+[00:19:11.061]  logging event trunk-status
+[00:19:11.063]  load-interval 30
+[00:19:11.064]  media-type rj45
+[00:19:11.066]  no negotiation auto
+[00:19:11.067]  channel-protocol lacp
+[00:19:11.069]  channel-group 1 mode active
+[00:19:11.071]  spanning-tree link-type point-to-point
+[00:19:11.073]  spanning-tree guard root
+[00:19:11.075]  ip dhcp snooping trust
+[00:19:11.076] !
+[00:19:11.076] interface GigabitEthernet0/0
+[00:19:11.078]  description Connected_2_MPLS_Perimeter_Lan_CE_016
+[00:19:11.081]  no switchport
+[00:19:11.082]  ip address 10.57.245.1 255.255.255.248
+[00:19:11.084]  negotiation auto
+[00:19:11.085] !
+[00:19:11.085] interface GigabitEthernet0/1
+[00:19:11.087]  description Connected_2_MPLS_Perimeter_Lan_CE_016
+[00:19:11.090]  no switchport
+[00:19:11.091]  ip address 10.57.246.1 255.255.255.248
+[00:19:11.094]  negotiation auto
+[00:19:11.095] !
+[00:19:11.095] interface GigabitEthernet1/0
+[00:19:11.096]  media-type rj45
+[00:19:11.098]  negotiation auto
+[00:19:11.023]  switchport mode trunk
+[00:19:11.026]  switchport nonegotiate
+[00:19:11.028]  logging event trunk-status
+[00:19:11.031]  load-interval 30
+[00:19:11.032]  media-type rj45
+[00:19:11.035]  no negotiation auto
+[00:19:11.036]  channel-protocol lacp
+[00:19:11.038]  channel-group 1 mode active
+[00:19:11.040]  spanning-tree link-type point-to-point
+[00:19:11.042]  spanning-tree guard root
+[00:19:11.044]  ip dhcp snooping trust
+[00:19:11.046] !
+[00:19:11.046] interface GigabitEthernet0/3
+[00:19:11.048]  description Connected_2_SW_ACC_65501
+[00:19:11.050]  switchport trunk allowed vlan 10,20,30,50,60,70,99-102
+[00:19:11.054]  switchport trunk encapsulation dot1q
+[00:19:11.056]  switchport trunk native vlan 99
+[00:19:11.058]  switchport mode trunk
+[00:19:11.060]  switchport nonegotiate
+[00:19:11.061]  logging event trunk-status
+[00:19:11.063]  load-interval 30
+[00:19:11.064]  media-type rj45
+[00:19:11.066]  no negotiation auto
+[00:19:11.067]  channel-protocol lacp
+[00:19:11.069]  channel-group 1 mode active
+[00:19:11.071]  spanning-tree link-type point-to-point
+[00:19:11.073]  spanning-tree guard root
+[00:19:11.075]  ip dhcp snooping trust
+[00:19:11.076] !
+[00:19:11.076] interface GigabitEthernet0/0
+[00:19:11.078]  description Connected_2_MPLS_Perimeter_Lan_CE_016
+[00:19:11.081]  no switchport
+[00:19:11.082]  ip address 10.57.245.1 255.255.255.248
+[00:19:11.084]  negotiation auto
+[00:19:11.085] !
+[00:19:11.085] interface GigabitEthernet0/1
+[00:19:11.087]  description Connected_2_MPLS_Perimeter_Lan_CE_016
+[00:19:11.090]  no switchport
+[00:19:11.091]  ip address 10.57.246.1 255.255.255.248
+[00:19:11.094]  negotiation auto
+[00:19:11.095] !
+[00:19:11.095] interface GigabitEthernet1/0
+[00:19:11.096]  media-type rj45
+[00:19:11.098]  negotiation auto
+[00:19:11.099] !
+[00:19:11.099] interface GigabitEthernet1/1
+[00:19:11.101]  media-type rj45
+[00:19:11.102]  negotiation auto
+[00:19:11.103] !
+[00:19:11.103] interface GigabitEthernet1/2
+[00:19:11.105]  media-type rj45
+[00:19:11.106]  negotiation auto
+[00:19:11.107] !
+[00:19:11.107] interface GigabitEthernet1/3
+[00:19:11.109]  media-type rj45
+[00:19:11.110]  negotiation auto
+[00:19:11.111] !
+[00:19:11.111] interface Vlan10
+[00:19:11.112]  description Connected_2_Users
+[00:19:11.114]  ip address 10.57.10.1 255.255.255.0
+[00:19:11.117] !
+[00:19:11.117] interface Vlan20
+[00:19:11.118]  description Connected_2_Voice
+[00:19:11.120]  ip address 10.57.20.1 255.255.255.0
+[00:19:11.123] !
+[00:19:11.123] interface Vlan30
+[00:19:11.124]  description Connected_2_Printers
+[00:19:11.127]  ip address 10.57.30.1 255.255.255.0
+[00:19:11.129] !
+[00:19:11.129] interface Vlan40
+[00:19:11.130]  description Connected_2_CCTV
+[00:19:11.133]  ip vrf forwarding CCTV
+[00:19:11.134]  ip address 10.57.40.1 255.255.255.0
+[00:19:11.137] !
+[00:19:11.137] interface Vlan50
+[00:19:11.138]  description Connected_2_Servers
+[00:19:11.140]  ip address 10.57.50.1 255.255.255.0
+[00:19:11.213] !
+[00:19:11.214] interface Vlan60
+[00:19:11.215]  description Connected_2_Mgmt_Servers
+[00:19:11.217]  ip address 10.57.60.1 255.255.255.0
+[00:19:11.220] !
+[00:19:11.220] interface Vlan70
+[00:19:11.221]  description Connected_2_iLo_iDrac
+[00:19:11.223]  ip address 10.57.70.1 255.255.255.0
+[00:19:11.226] !
+[00:19:11.226] interface Vlan100
+[00:19:11.227]  description Connected_2_Mgmt_Net
+[00:19:11.229]  ip address 10.57.100.1 255.255.255.0
+[00:19:11.232] !
+[00:19:11.232] interface Vlan101
+[00:19:11.234]  description Perimeter_Lan
+[00:19:11.236]  ip address 10.57.101.1 255.255.255.248
+[00:19:11.238] !
+[00:19:11.238] interface Vlan102
+[00:19:11.239]  description MPLS_Perimeter_Lan
+[00:19:11.241]  no ip address
+[00:19:11.242] !
+[00:19:11.242] router ospf 40 vrf CCTV
+[00:19:11.244]  log-adjacency-changes detail
+[00:19:11.246]  network 10.57.40.0 0.0.0.255 area 40
+[00:19:11.248] !
+[00:19:11.248] router ospf 110
+[00:19:11.249]  ispf
+[00:19:11.250]  log-adjacency-changes detail
+[00:19:11.252]  redistribute connected subnets route-map CORPORATE_CONNECTED_2_OSPF
+[00:19:11.256]  network 10.57.245.0 0.0.0.7 area 0
+[00:19:11.258]  network 101.101.101.101 0.0.0.0 area 0
+[00:19:11.261] !
+[00:19:11.261] router ospf 120
+[00:19:11.262]  ispf
+[00:19:11.263]  log-adjacency-changes detail
+[00:19:11.264]  network 10.57.246.0 0.0.0.7 area 120
+[00:19:11.267]  network 65.50.0.1 0.0.0.0 area 120
+[00:19:11.269] !
+[00:19:11.269] ip forward-protocol nd
+[00:19:11.271] !
+[00:19:11.271] no ip http server
+[00:19:11.272] no ip http secure-server
+[00:19:11.274] !
+[00:19:11.274] ip ssh source-interface Vlan100
+[00:19:11.276] ip ssh version 2
+[00:19:11.277] !
+[00:19:11.277] !
+[00:19:11.277] logging host 10.57.50.30 discriminator WARNING
+[00:19:11.280] !
+[00:19:11.281] route-map CORPORATE_CONNECTED_2_0SPF permit 10
+[00:19:11.284]  match interface Vlan10
+[00:19:11.285]  set metric-type type-1
+[00:19:11.287]  set tag 10
+[00:19:11.287] !
+[00:19:11.287] route-map CORPORATE_CONNECTED_2_0SPF permit 20
+[00:19:11.290]  match interface Vlan20
+[00:19:11.292]  set metric-type type-1
+[00:19:11.293]  set tag 20
+[00:19:11.294] !
+[00:19:11.294] route-map CORPORATE_CONNECTED_2_0SPF permit 30
+[00:19:11.297]  match interface Vlan30
+[00:19:11.298]  set metric-type type-1
+[00:19:11.300]  set tag 30
+[00:19:11.301] !
+[00:19:11.301] route-map CORPORATE_CONNECTED_2_0SPF permit 40
+[00:19:11.303]  match interface Vlan40
+[00:19:11.305]  set metric-type type-1
+[00:19:11.306]  set tag 40
+[00:19:11.307] !
+[00:19:11.307] route-map Loopback_2_OSPF permit 65501
+[00:19:11.310]  match interface Loopback0
+[00:19:11.311]  set metric-type type-1
+[00:19:11.313]  set tag 65501
+[00:19:11.314] !
+[00:19:11.314] route-map CORPORATE_CONNECTED_2_OSPF permit 10
+[00:19:11.317] !
+[00:19:11.317] !
+[00:19:11.317] !
+[00:19:11.317] control-plane
+[00:19:11.318] !
+[00:19:11.319] banner exec ^C
+[00:19:11.320] **************************************************************************
+[00:19:11.325] * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+[00:19:11.330] * education. IOSv is provided as-is and is not supported by Cisco's      *
+[00:19:11.337] * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+[00:19:11.410] * of the IOSv Software or Documentation to any third party for any       *
+[00:19:11.414] * purposes is expressly prohibited except as otherwise authorized by     *
+[00:19:11.418] * Cisco in writing.                                                      *
+[00:19:11.422] **************************************************************************^C
+[00:19:11.426] banner incoming ^C
+[00:19:11.427] **************************************************************************
+[00:19:11.431] * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+[00:19:11.435] * education. IOSv is provided as-is and is not supported by Cisco's      *
+[00:19:11.438] * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+[00:19:11.442] * of the IOSv Software or Documentation to any third party for any       *
+[00:19:11.446] * purposes is expressly prohibited except as otherwise authorized by     *
+[00:19:11.450] * Cisco in writing.                                                      *
+[00:19:11.454] **************************************************************************^C
+[00:19:11.458] banner login ^C
+[00:19:11.459] **************************************************************************
+[00:19:11.463] * IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+[00:19:11.467] * education. IOSv is provided as-is and is not supported by Cisco's      *
+[00:19:11.471] * Technical Advisory Center. Any use or disclosure, in whole or in part, *
+[00:19:11.474] * of the IOSv Software or Documentation to any third party for any       *
+[00:19:11.478] * purposes is expressly prohibited except as otherwise authorized by     *
+[00:19:11.482] * Cisco in writing.                                                      *
+[00:19:11.486] **************************************************************************^C
+[00:19:11.490] banner motd ^CAccess Is Only Allowed By Authorize Persons^C
+[00:19:11.493] !
+[00:19:11.493] line con 0
+[00:19:11.494] line aux 0
+[00:19:11.495] line vty 0 4
+[00:19:11.495]  session-timeout 5 
+[00:19:11.496]  logging synchronous
+[00:19:11.497]  login local
+[00:19:11.498]  length 512
+[00:19:11.499]  width 512
+[00:19:11.499]  transport input ssh
+[00:19:11.501]  transport output ssh
+[00:19:11.502] !
+[00:19:11.502] !
+[00:19:11.502] end
+[00:19:11.502] 
+[00:19:11.502] SW_CORE_65501#
+
+
+
+
